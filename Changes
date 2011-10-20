@@ -1,5 +1,9 @@
 Revision history for Perl extension Net::MySQL.
 
+0.10
+	- add missing dependency for Digest::SHA1 (reported in RT#41721)
+    - fix RT#36646
+
 0.09 Fri Mar 31 22:45:37 JST 2006
 	- Refine packet dump.
 	- Support 4.1 authenticaiton protocol.
