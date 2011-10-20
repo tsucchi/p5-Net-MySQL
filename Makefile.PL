@@ -6,6 +6,7 @@ WriteMakefile(
     'VERSION_FROM'	=> 'MySQL.pm',
     'PREREQ_PM'		=> {
 		'IO::Socket'   => 0.0,
+        'Digest::SHA1' => 0.0,
 	},
     ($] >= 5.005 ?
       (ABSTRACT_FROM => 'MySQL.pm',
