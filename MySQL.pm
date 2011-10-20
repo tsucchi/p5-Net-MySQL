@@ -456,7 +456,7 @@ sub _has_next_packet
 {
 	my $self = shift;
 	#substr($_[0], -1) ne "\xfe";
-    #$self->_dump_packet(substr($_[0], -5));
+	#$self->_dump_packet(substr($_[0], -5));
 	return substr($_[0], -5, 1) ne "\xfe";
 }
 
