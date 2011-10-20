@@ -48,12 +48,12 @@ DEPENDENCIES
 This module requires these other modules and libraries:
 
   IO::Socket
-
+  DIGEST::SHA1
 
 BUG REPORT
 
-When a problem is found, append the following elements and give
-mail to <oyama@module.jp>.
+When a problem is found, please submit a bug report 
+to RT http://rt.cpan.org/ with following information
 
   * The version and platform of Perl which are used.
   * The version and platform of MySQL server.
@@ -67,7 +67,8 @@ mail to <oyama@module.jp>.
 
 COPYRIGHT AND LICENCE
 
-Copyright (C) 2002 Hiroyuki OYAMA. Japan. All rights reserved.
+Copyright (C) 2002-2011 Hiroyuki OYAMA. Japan. All rights reserved.
+Copyright (C) 2011 Takuya Tsuchida
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself. 
