@@ -456,7 +456,8 @@ sub _has_next_packet
 {
 	my $self = shift;
 	#substr($_[0], -1) ne "\xfe";
-	return substr($_[0], -5) ne "\xfe\0\0\x22\x00";
+    #$self->_dump_packet(substr($_[0], -5));
+	return substr($_[0], -5, 1) ne "\xfe";
 }
 
 
@@ -476,6 +477,7 @@ sub _dump_packet {
         $str .= "\n"; 
     }
     print $str;
+    #warn $str;
 }
 
 
