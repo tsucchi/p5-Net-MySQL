@@ -1102,9 +1102,18 @@ L<libmysql>, L<IO::Socket>
 
 Hiroyuki OYAMA E<lt>oyama@module.jpE<gt>
 
+=head1 MAINTAINER
+
+Takuya Tsuchida E<lt>tsucchi at cpan.orgE<gt>
+
+=head1 REPOSITORY
+
+http://github.com/tsucchi/p5-Net-MySQL
+
 =head1 COPYRIGHT AND LICENCE
 
-Copyright (C) 2002 Hiroyuki OYAMA. Japan. All rights reserved.
+Copyright (C) 2002-2011 Hiroyuki OYAMA. Japan. All rights reserved.
+Copyright (C) 2011 Takuya Tsuchida
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself. 
