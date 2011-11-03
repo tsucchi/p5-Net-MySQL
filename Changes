@@ -1,5 +1,10 @@
 Revision history for Perl extension Net::MySQL.
 
+0.11
+	- RT#41721 is completely fixed. (sorry, I update only Makefile.PL and forgot to update META.yml)
+    - remove SUPPORT OPERATING SYSTEM in POD because description is too old.
+    - fix typo in POD (reported in RT#63121: Misprint in documentation)
+
 0.10
 	- add missing dependency for Digest::SHA1 (reported in RT#41721)
 	- fix RT#36646
