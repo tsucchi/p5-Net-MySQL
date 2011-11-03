@@ -997,7 +997,7 @@ A query() method transmits the specified SQL string to MySQL database, and obtai
 When SELECT type SQL is specified, Net::MySQL::RecordIterator object which shows the reference result is returned.
 
     $mysql->query(q{SELECT * FROM table});
-    my $a_record_iterator = $mysql->create_recrod_iterator();
+    my $a_record_iterator = $mysql->create_record_iterator();
 
 Net::MySQL::RecordIterator object is applicable to acquisition of a reference result. See L<"/Net::SQL::RecordIterator API"> for more.
 
