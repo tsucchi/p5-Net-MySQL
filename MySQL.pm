@@ -269,7 +269,6 @@ sub _send_login_message
 		"\x21\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0".
 		 join "\0",
 		$self->{user},
-		"\x14".
 		Net::MySQL::Password->scramble(
 			$self->{password}, $self->{salt}, $self->{client_capabilities}
 		);
@@ -686,9 +685,9 @@ sub scramble {
 	my $class = shift;
 	my $password = shift;
 	my $hash_seed = shift;
-	return '' unless $password;
-	return '' if length $password == 0;
-	return _make_scrambled_password($hash_seed, $password);
+	return "\x00\x00" unless $password;
+	return "\x00\x00" if length $password == 0;
+	return "\x14" . _make_scrambled_password($hash_seed, $password);
 }
 
 
