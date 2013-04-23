@@ -93,7 +93,7 @@ sub close
 {
 	my $self = shift;
 	my $mysql = $self->{socket};
-	return unless $mysql->can('send');
+	return if( !defined $mysql || !$mysql->can('send') );
 
 	my $quit_message =
 		chr(length(COMMAND_QUIT)). "\x00\x00\x00". COMMAND_QUIT;
