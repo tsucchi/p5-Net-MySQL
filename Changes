@@ -1,5 +1,9 @@
 Revision history for Perl extension Net::MySQL.
 
+0.XX
+    - fix: can't login using empty password (RT#19021)
+    - fix: warning is shown when socket is not undef in destructor.
+
 0.11
 	- RT#41721 is completely fixed. (sorry, I updated only Makefile.PL and forgot to update META.yml)
     - remove SUPPORT OPERATING SYSTEM in POD because description is too old.
