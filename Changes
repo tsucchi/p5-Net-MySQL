@@ -1,6 +1,6 @@
 Revision history for Perl extension Net::MySQL.
 
-0.XX
+0.12 2013/04/24
     - fix: can't login using empty password (RT#19021)
     - fix: warning is shown when socket is not undef in destructor.
 

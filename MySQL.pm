@@ -5,7 +5,7 @@ use IO::Socket;
 use Carp;
 use vars qw($VERSION $DEBUG);
 use strict;
-$VERSION = '0.11';
+$VERSION = '0.12';
 
 use constant COMMAND_SLEEP          => "\x00";
 use constant COMMAND_QUIT           => "\x01";
