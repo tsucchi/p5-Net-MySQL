@@ -224,6 +224,8 @@ sub _get_server_information
 	$i += 4;
 	$self->{salt} = substr $message, $i, 8;
 	#
+	$self->{saltold} = $self->{salt};
+        #
 	$i += 8+1;
 	if (length $message >= $i + 1) {
 		$i += 1;
@@ -256,7 +258,19 @@ sub _request_authentication
 			croak "Timeout of authentication";
 		}
 		croak substr $auth_result, 7;
-	}
+	} elsif (ord(substr $auth_result, 4) == 254 ) {
+		$self->_send_password();
+		$mysql->recv($auth_result, BUFFER_LENGTH, 0);
+		$self->_dump_packet($auth_result) if Net::MySQL->debug;
+		if ($self->_is_error($auth_result)) {
+			$mysql->close;
+			if (length $auth_result < 7) {
+				croak "Timeout of authentication";
+			}
+			croak substr $auth_result, 7;
+		}
+
+        }
 	print "connect database\n" if Net::MySQL->debug;
 }
 
@@ -279,6 +293,21 @@ sub _send_login_message
 	$self->_dump_packet($login_message) if Net::MySQL->debug;
 }
 
+
+sub _send_password
+{
+	my $self = shift;
+	my $mysql = $self->{socket};
+	my $body = "\0\0\x03".
+		Net::MySQL::Password32->scramble(
+				$self->{password}, $self->{saltold}, $self->{client_capabilities}
+				);
+	$body .= "\0";
+	my $pw_message = chr(length($body)-3). $body;
+	$mysql->send($pw_message, 0);
+	$self->_dump_packet($pw_message) if Net::MySQL->debug;
+}
+ 
 
 
 sub _execute_command
@@ -456,7 +485,7 @@ sub _has_next_packet
 	my $self = shift;
 	#substr($_[0], -1) ne "\xfe";
 	#$self->_dump_packet(substr($_[0], -5));
-	return substr($_[0], -5, 1) ne "\xfe";
+	return (substr($_[0],-5) ne "\xfe\0\0\x02\x00" and substr($_[0], -5) ne "\xfe\0\0\x22\x00");
 }
 
 
